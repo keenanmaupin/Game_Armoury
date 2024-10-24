@@ -8,9 +8,9 @@ interface UsersAttributes {
   gamingEra: string;
 }
 
-interface UsersCreationAttributes extends Optional<UsersAttributes, 'id'> {} 
+interface UsersCreationAttributes extends Optional<UsersAttributes, 'id'> {}
 
-export class Users extends Model<UsersAttributes, UsersCreationAttributes> implements UsersAttributes { 
+export class Users extends Model<UsersAttributes, UsersCreationAttributes> implements UsersAttributes {
   public id!: number;
   public userName!: string;  
   public password!: string;  
@@ -18,8 +18,7 @@ export class Users extends Model<UsersAttributes, UsersCreationAttributes> imple
   public gamingEra!: string;  
 }
 
-export function userFactory(sequelize: Sequelize): typeof Users {
-  // TODO: Initialize the User Model
+export function UserFactory(sequelize: Sequelize): typeof Users {
     Users.init(
     {
       id: {
@@ -56,4 +55,3 @@ export function userFactory(sequelize: Sequelize): typeof Users {
 
   return Users;
 }
-
