@@ -1,6 +1,6 @@
 import sequelize from '../config/connection.js';
-import { UsersFactory } from './users.js';
-import { GameFactory } from './games.js';
+import { UsersFactory } from './Users.js';
+import { GameFactory } from './Games.js';
 
 
 const Users = UsersFactory(sequelize);
