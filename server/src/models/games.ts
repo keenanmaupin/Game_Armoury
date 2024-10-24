@@ -1,27 +1,30 @@
 import { DataTypes, Sequelize, Model, Optional } from 'sequelize';
-import { Volunteer } from './users.js';
 
-interface WorkAttributes {
+
+interface GamesAttributes {
   id: number;
   name: string;
-  status: string;
   description: string;
-  assignedVolunteerId?: number;
+  releaseDate: number;
+  console: string;
+  publisher: string;
+  genres: string;
 }
 
-interface WorkCreationAttributes extends Optional<WorkAttributes, 'id'> {}
+interface GamesCreationAttributes extends Optional<GamesAttributes, 'id'> {}
 
-export class Work extends Model<WorkAttributes, WorkCreationAttributes> implements WorkAttributes {
+export class Games extends Model<GamesAttributes, GamesCreationAttributes> implements GamesAttributes {
   public id!: number;
   public name!: string;
-  public status!: string;
   public description!: string;
-  public assignedVolunteerId?: number;
-  public assignedVolunteer?: Volunteer;
+  public releaseDate!: number;
+  public console!: string;
+  public publisher!: string;
+  public genres!: string;
 }
 
-export function WorkFactory(sequelize: Sequelize): typeof Work {
-  Work.init(
+export function GamesFactory(sequelize: Sequelize): typeof Games {
+  Games.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -29,15 +32,15 @@ export function WorkFactory(sequelize: Sequelize): typeof Work {
         autoIncrement: true,
       },
       name: { type: DataTypes.STRING },
-      status: { type: DataTypes.STRING },
       description: { type: DataTypes.STRING },
-      assignedVolunteerId: {
-        type: DataTypes.INTEGER,
-      },
+      releaseDate: { type: DataTypes.INTEGER },
+      console: { type: DataTypes.STRING },
+      publisher: { type: DataTypes.STRING },
+      genres: { type: DataTypes.STRING },
     },
     {
       sequelize,
-      tableName: 'work',
+      tableName: 'games',
       timestamps: false, // Disable createdAt and updatedAt fields by default
       underscored: true, // Convert table names to underscored_case by default
       paranoid: true, // Add deletedAt field to soft delete records by default
@@ -45,5 +48,5 @@ export function WorkFactory(sequelize: Sequelize): typeof Work {
     }
   );
 
-  return Work;
+  return Games;
 }
