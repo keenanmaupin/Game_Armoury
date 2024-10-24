@@ -16,7 +16,6 @@ export class User extends Model<userAttributes, VolunteerCreationAttributes> imp
   public password!: string;  
   public email!: string;  
   public gamingEra!: string;  
-
 }
 
 export function userFactory(sequelize: Sequelize): typeof User {
@@ -30,9 +29,19 @@ export function userFactory(sequelize: Sequelize): typeof User {
       },
       userName: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       password: {
-        au
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      gamingEra: {
+        type: DataTypes.STRING,
+        allowNull: false,
       }
     },
     {
