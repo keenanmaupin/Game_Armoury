@@ -1,6 +1,6 @@
 import { DataTypes, Sequelize, Model, Optional } from 'sequelize';
 
-interface userAttributes {
+interface UserAttributes {
   id: number;
   userName: string;
   password: string;
@@ -8,9 +8,9 @@ interface userAttributes {
   gamingEra: string;
 }
 
-interface VolunteerCreationAttributes extends Optional<userAttributes, 'id'> {}
+interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {} 
 
-export class User extends Model<userAttributes, VolunteerCreationAttributes> implements userAttributes {
+export class Users extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes { 
   public id!: number;
   public userName!: string;  
   public password!: string;  
@@ -18,9 +18,9 @@ export class User extends Model<userAttributes, VolunteerCreationAttributes> imp
   public gamingEra!: string;  
 }
 
-export function userFactory(sequelize: Sequelize): typeof User {
-  // TODO: Initialize the Volunteer Model
-    User.init(
+export function userFactory(sequelize: Sequelize): typeof Users {
+  // TODO: Initialize the User Model
+    Users.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -46,7 +46,7 @@ export function userFactory(sequelize: Sequelize): typeof User {
     },
     {
       sequelize,
-      tableName: 'volunteers',
+      tableName: 'users',
       timestamps: false, // Disable createdAt and updatedAt fields by default
       underscored: true, // Convert table names to underscored_case by default
       paranoid: true, // Add deletedAt field to soft delete records by default
@@ -54,6 +54,6 @@ export function userFactory(sequelize: Sequelize): typeof User {
     }
   );
 
-  return Volunteer;
+  return Users;
 }
 
