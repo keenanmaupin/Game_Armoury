@@ -1,28 +1,39 @@
 import { DataTypes, Sequelize, Model, Optional } from 'sequelize';
 
-interface VolunteerAttributes {
+interface userAttributes {
   id: number;
-  volunteerName: string;
+  userName: string;
+  password: string;
+  email: string;
+  gamingEra: string;
 }
 
-interface VolunteerCreationAttributes extends Optional<VolunteerAttributes, 'id'> {}
+interface VolunteerCreationAttributes extends Optional<userAttributes, 'id'> {}
 
-export class Volunteer extends Model<VolunteerAttributes, VolunteerCreationAttributes> implements VolunteerAttributes {
+export class User extends Model<userAttributes, VolunteerCreationAttributes> implements userAttributes {
   public id!: number;
-  public volunteerName!: string;  
+  public userName!: string;  
+  public password!: string;  
+  public email!: string;  
+  public gamingEra!: string;  
 
 }
 
-export function VolunteerFactory(sequelize: Sequelize): typeof Volunteer {
+export function userFactory(sequelize: Sequelize): typeof User {
   // TODO: Initialize the Volunteer Model
-    Volunteer.init(
+    User.init(
     {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
       },
-      volunteerName: {type: DataTypes.STRING},
+      userName: {
+        type: DataTypes.STRING,
+      },
+      password: {
+        au
+      }
     },
     {
       sequelize,
