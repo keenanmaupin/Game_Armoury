@@ -1,5 +1,5 @@
 import { DataTypes, Sequelize, Model, Optional } from 'sequelize';
-import { Volunteer } from './volunteer.js';
+import { Volunteer } from './users.js';
 
 interface WorkAttributes {
   id: number;
