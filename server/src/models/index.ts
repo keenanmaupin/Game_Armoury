@@ -1,26 +1,21 @@
 import sequelize from '../config/connection.js';
-import { VolunteerFactory } from './users.js';
-import { WorkFactory } from './games.js';
+import { UsersFactory } from './users.js';
+import { GameFactory } from './games.js';
 
 
-// TODO: Create a One-to-Many relationship (Volunteer can have numerous volunteer works)
+const Users = UsersFactory(sequelize);
+const Games = GameFactory(sequelize);
 
-
-const Volunteer = VolunteerFactory(sequelize);
-const Work = WorkFactory(sequelize);
-
-
-
-Volunteer.hasMany(Work, {
-    foreignKey: 'volunteer_id',
-    onDelete: 'CASCADE',
+Users.haMany(Games, {
+    foreignKey: 'users_id',
+    onDelete: 'CASCADE'
 });
-Work.belongsToMany(Volunteer,{
-    through: 'volunteer_works',
-    foreignKey: 'work_id',
+Games.belongsToMany(Users,{
+    through: 'users_games',
+    foreigney: 'game_id',
 
 })
 
-export { Volunteer, Work};
+export { Users, Games};
 
 
