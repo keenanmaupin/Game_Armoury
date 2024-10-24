@@ -1,0 +1,5 @@
+-- DROP DATABASE
+DROP DATABASE IF EXISTS game_armoury_db;
+
+-- CREATE DATABASE
+CREATE DATABASE game_armoury_db;
