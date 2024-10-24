@@ -3,7 +3,8 @@ import './LoginPage.css';
 
 const LoginPage: React.FC = () => {
     return (
-        <div className="background">
+        <>
+            <div className="background"></div>
             <div className="login-box">
                 <h2>Login</h2>
                 <form>
@@ -16,10 +17,10 @@ const LoginPage: React.FC = () => {
                     <div className="buttons">
                         <button type="button" className="register-btn">Register</button>
                         <button type="submit" className="login-btn">Login</button>
-                    </div> 
+                    </div>
                 </form>
             </div>
-        </div>
+        </>
     );
 };
 

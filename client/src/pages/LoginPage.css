@@ -14,24 +14,28 @@ body, html {
 
 /* Background styling */
 .background {
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(url.src/assets/pexels-atomlaborblog-776092.jpg); 
+    background-image: url('/assets/pexels-atomlaborblog-776092.jpg'); /* Update this path if necessary */
+    background-size: cover;
     background-position: center;
     filter: blur(8px);
-    z-index: -1;
+    z-index: -1; /* Ensure the background stays behind the login box */
 }
 
 /* Login box styling */
 .login-box {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
     border-radius: 10px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
     padding: 20px;
     width: 300px;
     text-align: center;
     position: relative;
+    z-index: 0; /* Make sure it stays above the background */
 }
 
 h2 {
