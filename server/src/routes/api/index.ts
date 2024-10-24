@@ -2,4 +2,7 @@ import { Router } from 'express';
 
 const router = Router();
 
-export default router;
+import { gamesRouter } from './games.js';
+import { usersRouter } from './users.js';
+
+const router = Router();
