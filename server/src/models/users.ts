@@ -1,6 +1,6 @@
 import { DataTypes, Sequelize, Model, Optional } from 'sequelize';
 
-interface UserAttributes {
+interface UsersAttributes {
   id: number;
   userName: string;
   password: string;
@@ -8,9 +8,9 @@ interface UserAttributes {
   gamingEra: string;
 }
 
-interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {} 
+interface UsersCreationAttributes extends Optional<UsersAttributes, 'id'> {} 
 
-export class Users extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes { 
+export class Users extends Model<UsersAttributes, UsersCreationAttributes> implements UsersAttributes { 
   public id!: number;
   public userName!: string;  
   public password!: string;  
