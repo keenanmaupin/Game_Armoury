@@ -18,7 +18,7 @@ export class Users extends Model<UsersAttributes, UsersCreationAttributes> imple
   public gamingEra!: string;  
 }
 
-export function UserFactory(sequelize: Sequelize): typeof Users {
+export function UsersFactory(sequelize: Sequelize): typeof Users {
     Users.init(
     {
       id: {
