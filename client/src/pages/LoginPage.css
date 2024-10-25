@@ -1,3 +1,12 @@
+/* Import the custom font */
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('/assets/fonts/my-custom-font.woff2') format('woff2'),
+         url('/assets/fonts/my-custom-font.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* Wrapper for the login page */
 .login-page {
     height: 100vh;
@@ -15,11 +24,31 @@
 }
 
 .site-header h1 {
-    font-size: 3em; /* Large font size */
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add some shadow for better readability */
+    font-family: 'MyCustomFont', sans-serif; /* Apply custom font */
+    font-size: 4em; /* Large font size for prominence */
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* Rainbow colors for each letter */
+.rainbow-0 { color: red; }
+.rainbow-1 { color: orange; }
+.rainbow-2 { color: yellow; }
+.rainbow-3 { color: green; }
+.rainbow-4 { color: blue; }
+.rainbow-5 { color: indigo; }
+.rainbow-6 { color: violet; }
+
+/* Optional: Add some animation */
+.rainbow-letter {
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.rainbow-letter:hover {
+    transform: scale(1.2);
 }
 
 /* Background styling */
@@ -33,22 +62,79 @@
     background-size: cover;
     background-position: center;
     filter: blur(8px);
-    z-index: -1;
+    z-index: -1; /* Keeps the background behind the login box */
 }
 
 /* Login box styling */
 .login-box {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
     border-radius: 10px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 240px;
-    height: 320px;
+    width: 240px; /* Approximately 3 inches */
+    height: 320px; /* Approximately 4 inches */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: center; /* Centers content vertically */
     text-align: center;
     position: relative;
-    z-index: 1;
+    z-index: 1; /* Ensures it's above the blurred background */
+}
+
+/* Headings */
+.login-box h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #333;
+}
+
+/* Input field styling */
+.input-group {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Button styling */
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.login-btn {
+    background-color: #007BFF;
+    color: white;
+}
+
+.login-btn:hover {
+    background-color: #0056b3;
+}
+
+.register-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.register-btn:hover {
+    background-color: #5a6268;
 }
