@@ -19,12 +19,13 @@ body, html {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('/assets/pexels-atomlaborblog-776092.jpg'); /* Update this path if necessary */
+    background-image: url('/assets/background.jpg'); /* Adjust the file name if needed */
     background-size: cover;
     background-position: center;
     filter: blur(8px);
-    z-index: -1; /* Ensure the background stays behind the login box */
+    z-index: -1;
 }
+
 
 /* Login box styling */
 .login-box {
