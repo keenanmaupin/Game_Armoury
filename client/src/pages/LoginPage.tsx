@@ -8,9 +8,21 @@ const LoginPage: React.FC = () => {
         setIsRegisterMode((prevMode) => !prevMode);
     };
 
+    const siteName = "Game Armoury";
+
     return (
         <div className="login-page">
             <div className="background"></div>
+            {/* Header Section */}
+            <header className="site-header">
+                <h1>
+                    {siteName.split('').map((char, index) => (
+                        <span key={index} className={`rainbow-letter rainbow-${index % 7}`}>
+                            {char}
+                        </span>
+                    ))}
+                </h1>
+            </header>
             <div className="login-box">
                 <h2>{isRegisterMode ? 'Register' : 'Login'}</h2>
                 <form>
@@ -20,7 +32,6 @@ const LoginPage: React.FC = () => {
                     <div className="input-group">
                         <input type="password" placeholder="Password" required />
                     </div>
-                    {/* Additional input field for register mode */}
                     {isRegisterMode && (
                         <div className="input-group">
                             <input type="email" placeholder="Email" required />
