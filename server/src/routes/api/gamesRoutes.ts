@@ -1,13 +1,17 @@
 import express from 'express';
 import type { Request, Response } from 'express';
 import { Games } from '../../models/index.js';
+require('dotenv').config();
 
 const router = express.Router();
 
 // GET /games - Get all games
 router.get('/', async (_req: Request, res: Response) => {
-  const games = await Games.findAll();
-  res.json(games);
+  const { query } = req.body;
+
+  try {
+    const apiResponse = await fetch(`https://api.rawg.io/api/games/${query}?key=${import.meta.env.VITE_RAWG_API_KEY}`);
+  }
 
 });
 // GET /games/:id - Get a game by ID
