@@ -19,6 +19,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/node-fetch": "^2.6.11",
     "concurrently": "^9.0.1",
     "nodemon": "^3.1.7",
     "wait-on": "^8.0.1"
