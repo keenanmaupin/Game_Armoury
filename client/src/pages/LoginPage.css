@@ -1,49 +1,53 @@
-/* Import the custom font */
-@font-face {
-    font-family: 'MyCustomFont';
-    src: url('/assets/fonts/my-custom-font.woff2') format('woff2'),
-         url('/assets/fonts/my-custom-font.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+/* Base styles for the app (mobile-first) */
+body {
+    margin: 0;
+    font-family: 'MyCustomFont', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    position: relative;
+    flex-direction: column;
 }
 
 /* Wrapper for the login page */
 .login-page {
-    height: 100vh;
+    width: 100%;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     position: relative;
     overflow: hidden;
+    padding-top: 5rem; /* Adjust padding to create space for the header */
 }
 
 /* Header styling */
 .site-header {
-    margin-bottom: 20px; /* Space between header and login box */
+    margin-bottom: 15px;
+    margin-top: -3rem; /* Move the header slightly higher */
 }
 
 .site-header h1 {
-    font-family: 'MyCustomFont', sans-serif; /* Apply custom font */
-    font-size: 4em; /* Large font size for prominence */
+    font-size: 4em;
     margin: 0;
-    padding: 10px; /* Add some padding for space around the text */
+    padding: 5px;
     display: flex;
     justify-content: center;
 }
 
-/* Rainbow colors for each letter with a precise black outline and a more pronounced drop shadow */
+/* Rainbow colors for each letter with a precise black outline and more pronounced drop shadow */
 .rainbow-0, .rainbow-1, .rainbow-2, .rainbow-3, .rainbow-4, .rainbow-5, .rainbow-6 {
-    -webkit-text-stroke: none; /* Disable previous stroke */
     text-shadow: 
         -1px -1px 0 black,
         1px -1px 0 black,
         -1px 1px 0 black,
         1px 1px 0 black,
-        3px 3px 6px rgba(0, 0, 0, 0.7); /* Enhanced drop shadow */
+        3px 3px 6px rgba(0, 0, 0, 0.8);
 }
 
-/* Assign specific colors for each letter */
 .rainbow-0 { color: red; }
 .rainbow-1 { color: orange; }
 .rainbow-2 { color: yellow; }
@@ -52,19 +56,18 @@
 .rainbow-5 { color: indigo; }
 .rainbow-6 { color: violet; }
 
-/* Add hover animation to make letters larger when hovered */
 .rainbow-letter {
     display: inline-block;
     transition: transform 0.3s;
 }
 
 .rainbow-letter:hover {
-    transform: scale(1.2); /* Scale up the letter */
+    transform: scale(1.1);
 }
 
 /* Background styling */
 .background {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -73,65 +76,78 @@
     background-size: cover;
     background-position: center;
     filter: blur(8px);
-    z-index: -1; /* Keeps the background behind the login box */
+    z-index: -1;
 }
 
 /* Login box styling */
 .login-box {
-    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 240px; /* Approximately 3 inches */
-    height: 320px; /* Approximately 4 inches */
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 90%;
+    max-width: 300px;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Centers content vertically */
-    text-align: center;
     position: relative;
-    z-index: 1; /* Ensures it's above the blurred background */
+    z-index: 1;
 }
 
-/* Headings */
 .login-box h2 {
     margin-bottom: 10px;
-    font-size: 20px;
+    font-size: 1.5em;
     color: #333;
 }
 
 /* Input field styling */
 .input-group {
     width: 100%;
+    display: flex;
+    justify-content: center;
     margin-bottom: 10px;
 }
 
 input[type="text"], input[type="password"], input[type="email"] {
     width: 100%;
+    max-width: 260px;
     padding: 8px;
     margin: 5px 0;
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 14px;
+    box-sizing: border-box;
 }
 
 /* Button styling */
 .buttons {
     display: flex;
     justify-content: space-between;
+    gap: 10px;
     width: 100%;
+    max-width: 260px;
     margin-top: 10px;
 }
 
 button {
+    flex: 1;
     padding: 8px 12px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
-    transition: background 0.3s;
+    transition: transform 0.3s, background 0.3s;
+    position: relative;
 }
 
+/* Hover effect for buttons: scale and shake */
+button:hover {
+    transform: scale(2);
+    animation: shake 0.3s infinite alternate;
+}
+
+/* Login button */
 .login-btn {
     background-color: #007BFF;
     color: white;
@@ -141,11 +157,41 @@ button {
     background-color: #0056b3;
 }
 
+/* Register and Back to Login button styling */
 .register-btn {
-    background-color: #6c757d;
+    background-color: red;
     color: white;
 }
 
 .register-btn:hover {
-    background-color: #5a6268;
+    background-color: darkred;
+}
+
+/* Shake animation */
+@keyframes shake {
+    0% { transform: translateX(-2px); }
+    100% { transform: translateX(2px); }
+}
+
+/* Larger screen adjustments */
+@media (min-width: 768px) {
+    .login-page {
+        padding: 40px;
+    }
+
+    .site-header h1 {
+        font-size: 5em;
+    }
+
+    .login-box {
+        max-width: 400px;
+    }
+
+    .buttons {
+        max-width: 300px;
+    }
+
+    .input-group input {
+        max-width: 300px;
+    }
 }

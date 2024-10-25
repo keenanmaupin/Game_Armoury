@@ -8,7 +8,7 @@ const LoginPage: React.FC = () => {
         setIsRegisterMode((prevMode) => !prevMode);
     };
 
-    const siteName = "Game Armoury";
+    const titleText = isRegisterMode ? "Register" : "Login";
 
     return (
         <div className="login-page">
@@ -16,15 +16,21 @@ const LoginPage: React.FC = () => {
             {/* Header Section */}
             <header className="site-header">
                 <h1>
-                    {siteName.split('').map((char, index) => (
+                    {"Game Armoury".split('').map((char, index) => (
                         <span key={index} className={`rainbow-letter rainbow-${index % 7}`}>
-                            {char}
+                            {char === ' ' ? '\u00A0' : char}
                         </span>
                     ))}
                 </h1>
             </header>
             <div className="login-box">
-                <h2>{isRegisterMode ? 'Register' : 'Login'}</h2>
+                <h2>
+                    {titleText.split('').map((char, index) => (
+                        <span key={index} className={`rainbow-letter rainbow-${index % 7}`}>
+                            {char}
+                        </span>
+                    ))}
+                </h2>
                 <form>
                     <div className="input-group">
                         <input type="text" placeholder="Username" required />
