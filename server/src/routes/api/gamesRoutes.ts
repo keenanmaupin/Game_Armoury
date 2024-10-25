@@ -1,55 +1,68 @@
 import express from 'express';
 import type { Request, Response } from 'express';
 import { Games } from '../../models/index.js';
-require('dotenv').config();
+import fetch from 'node-fetch'; 
+import 'dotenv/config';
+
 
 const router = express.Router();
 
-// GET /games - Get all games
-router.get('/', async (_req: Request, res: Response) => {
-  const { query } = req.body;
+
+router.get('/', async (req: Request, res: Response):Promise<any> => {
+  const { query } = req.query;
+
+  if (!query) {
+    return res.status(400).json({ error: 'Query parameter is required' });
+  }
 
   try {
-    const apiResponse = await fetch(`https://api.rawg.io/api/games/${query}?key=${import.meta.env.VITE_RAWG_API_KEY}`);
+    const apiResponse = await fetch(
+      `https://api.rawg.io/api/games/${query}?key=${process.env.VITE_RAWG_API_KEY}`
+    );
+
+    if (!apiResponse.ok) {
+      return res.status(apiResponse.status).json({ error: 'Failed to fetch games from the API' });
+    }
+
+    const data = await apiResponse.json();
+    res.json(data);
+  } catch (error) {
+    console.error('Error fetching games:', error);
+    res.status(500).json({ error: 'An error occurred while fetching games' });
   }
-
 });
-// GET /games/:id - Get a game by ID
-router.get('/:id', async (req: Request, res: Response) => {
-  const games = await Games.findByPk(req.params.id);
-  res.json(games);
 
-});
-// POST /games - Create a new games
-//! ON HOLD FOR TIME BEING
+// GET /games/:id - Get a game by ID from the local database
+router.get('/:id', async (req: Request, res: Response):Promise<any>  => {
+  try {
+    const game = await Games.findByPk(req.params.id);
 
-// router.post('/', async (req: Request, res: Response) => {
-//   const games = await Games.create(req.body);
-//   res.json(games);
+    if (!game) {
+      return res.status(404).json({ error: 'Game not found' });
+    }
 
-// });
-
-// PUT /games/:id - Update  games by ID
-//! ON HOLD FOR TIME BEING
-
-// router.put('/:id', async (req: Request, res: Response) => {
-//   const games = await Games.findByPk(req.params.id);
-//   if(games) {
-//     await games.update(req.body);
-//     res.json(games);
-//     }
-  
-// });
-
-
-// DELETE /games/:id - Delete  games by ID
-router.delete('/:id', async (req: Request, res: Response) => {
-  const games = await Games.findByPk(req.params.id);
-  if(games) {
-    await games.destroy();
-    res.json(games);
+    res.json(game);
+  } catch (error) {
+    console.error('Error fetching game:', error);
+    res.status(500).json({ error: 'An error occurred while fetching the game' });
   }
+});
 
+// DELETE /games/:id - Delete a game by ID from the local database
+router.delete('/:id', async (req: Request, res: Response):Promise<any>  => {
+  try {
+    const game = await Games.findByPk(req.params.id);
+
+    if (!game) {
+      return res.status(404).json({ error: 'Game not found' });
+    }
+
+    await game.destroy();
+    res.json({ message: 'Game deleted successfully', game });
+  } catch (error) {
+    console.error('Error deleting game:', error);
+    res.status(500).json({ error: 'An error occurred while deleting the game' });
+  }
 });
 
 export { router as gamesRouter };
