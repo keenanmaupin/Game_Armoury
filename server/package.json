@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "main": "server.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "build": "npx tsc",
     "start": "npm run build && node dist/server.js --ignore client",
@@ -20,15 +20,17 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
     "pg": "^8.13.1",
     "sequelize": "^6.37.4"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/express": "^5.0.0",
-    "bcrypt": "^5.1.1",
-    "express": "^4.21.1",
-    "jsonwebtoken": "^9.0.2",
+    "@types/jsonwebtoken": "^9.0.7",
     "typescript": "^5.6.3"
   }
 }
