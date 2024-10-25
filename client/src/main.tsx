@@ -1,10 +1,13 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import React from 'react';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import LoginPage from './pages/LoginPage'; // Import the LoginPage component
 
-createRoot(document.getElementById('root')!).render(
+// Remove this line if you want to get rid of the global styles
+// import './index.css'; 
+
+createRoot(document.getElementById('root') as HTMLElement).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <LoginPage />
+  </StrictMode>
+);
