@@ -1,18 +1,18 @@
 import sequelize from '../config/connection.js';
-import { UsersFactory } from './Users.js';
-import { GameFactory } from './Games.js';
+import { UsersFactory } from './users.js';
+import { GamesFactory } from './games.js';
 
 
 const Users = UsersFactory(sequelize);
-const Games = GameFactory(sequelize);
+const Games = GamesFactory(sequelize);
 
-Users.haMany(Games, {
+Users.hasMany(Games, {
     foreignKey: 'users_id',
     onDelete: 'CASCADE'
 });
 Games.belongsToMany(Users,{
     through: 'users_games',
-    foreigney: 'game_id',
+    foreignKey: 'game_id',
 
 })
 
