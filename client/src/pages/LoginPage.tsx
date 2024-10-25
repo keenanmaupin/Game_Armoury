@@ -3,8 +3,8 @@ import './LoginPage.css';
 
 const LoginPage: React.FC = () => {
     return (
-        <>
-            <div className="background"></div>
+        <div className="login-page">
+            <div className="background"></div> {/* Background layer */}
             <div className="login-box">
                 <h2>Login</h2>
                 <form>
@@ -20,7 +20,7 @@ const LoginPage: React.FC = () => {
                     </div>
                 </form>
             </div>
-        </>
+        </div>
     );
 };
 
