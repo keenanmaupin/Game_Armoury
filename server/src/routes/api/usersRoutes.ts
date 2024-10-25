@@ -47,6 +47,7 @@ router.post('/', async (req: Request, res: Response) => {
 });
 
 // PUT IS CURRENTLY ON HOLD!!!
+//! ON HOLD FOR TIME BEING
 
 // PUT api/users/:id - Update users by ID
 // router.put('/:id', async (req: Request, res: Response) => {
@@ -55,7 +56,6 @@ router.post('/', async (req: Request, res: Response) => {
 //   await works.update(req.body);
 //   res.json(works);
 //   }
-//   // TODO: Update code to update already existing work by passing values of name, status, description, assignedVolunteerId.
 // });
 
 // DELETE api/users/:id - Delete users by ID

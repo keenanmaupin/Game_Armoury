@@ -15,6 +15,6 @@ app.use(express.json());
 
 sequelize.sync({ force: forceDatabaseRefresh }).then(() => {
   app.listen(PORT, () => {
-    console.log(`Server is listening on port ${PORT}`);
+    console.log(`THE Server is UP and JUMPIN on port ${PORT}!!!`);
   });
 });
