@@ -1,10 +1,12 @@
 import { FormEvent, useState } from 'react';
 import type Game from '../utils/interfaces/Game.interface';
 import { searchGameAPI } from '../api/API';
+import GameCard from '../components/GameCard';
 
 
 const GameSearch = () => {
   const [currentGame, setCurrentGame] = useState<Game>({
+    Id: 0,
     Name: '',
     Released_Date: '',
     Background_Image: '',
