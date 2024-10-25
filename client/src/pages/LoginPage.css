@@ -27,12 +27,23 @@
     font-family: 'MyCustomFont', sans-serif; /* Apply custom font */
     font-size: 4em; /* Large font size for prominence */
     margin: 0;
-    padding: 0;
+    padding: 10px; /* Add some padding for space around the text */
     display: flex;
     justify-content: center;
 }
 
-/* Rainbow colors for each letter */
+/* Rainbow colors for each letter with a precise black outline and a more pronounced drop shadow */
+.rainbow-0, .rainbow-1, .rainbow-2, .rainbow-3, .rainbow-4, .rainbow-5, .rainbow-6 {
+    -webkit-text-stroke: none; /* Disable previous stroke */
+    text-shadow: 
+        -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black,
+        3px 3px 6px rgba(0, 0, 0, 0.7); /* Enhanced drop shadow */
+}
+
+/* Assign specific colors for each letter */
 .rainbow-0 { color: red; }
 .rainbow-1 { color: orange; }
 .rainbow-2 { color: yellow; }
@@ -41,14 +52,14 @@
 .rainbow-5 { color: indigo; }
 .rainbow-6 { color: violet; }
 
-/* Optional: Add some animation */
+/* Add hover animation to make letters larger when hovered */
 .rainbow-letter {
     display: inline-block;
     transition: transform 0.3s;
 }
 
 .rainbow-letter:hover {
-    transform: scale(1.2);
+    transform: scale(1.2); /* Scale up the letter */
 }
 
 /* Background styling */
