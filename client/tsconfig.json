@@ -20,8 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.node.json" }
-  ]
+  "include": ["src", "src/utils/interfaces"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

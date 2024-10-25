@@ -17,11 +17,13 @@ router.get('/:id', async (req: Request, res: Response) => {
 
 });
 // POST /games - Create a new games
-router.post('/', async (req: Request, res: Response) => {
-  const games = await Games.create(req.body);
-  res.json(games);
+//! ON HOLD FOR TIME BEING
 
-});
+// router.post('/', async (req: Request, res: Response) => {
+//   const games = await Games.create(req.body);
+//   res.json(games);
+
+// });
 
 // PUT /games/:id - Update  games by ID
 //! ON HOLD FOR TIME BEING

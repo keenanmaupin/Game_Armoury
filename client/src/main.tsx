@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import LoginPage from './pages/LoginPage'; // Import the LoginPage component
