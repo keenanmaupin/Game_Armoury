@@ -6,9 +6,10 @@ interface GamesAttributes {
   name: string;
   description: string;
   releaseDate: number;
-  console: string;
+  platform: string;
   publisher: string;
   genres: string;
+  background_image: string;
 }
 
 interface GamesCreationAttributes extends Optional<GamesAttributes, 'id'> {}
@@ -18,9 +19,10 @@ export class Games extends Model<GamesAttributes, GamesCreationAttributes> imple
   public name!: string;
   public description!: string;
   public releaseDate!: number;
-  public console!: string;
+  public platform!: string;
   public publisher!: string;
   public genres!: string;
+  public background_image!: string;
 }
 
 export function GamesFactory(sequelize: Sequelize): typeof Games {
@@ -34,9 +36,10 @@ export function GamesFactory(sequelize: Sequelize): typeof Games {
       name: { type: DataTypes.STRING },
       description: { type: DataTypes.STRING },
       releaseDate: { type: DataTypes.INTEGER },
-      console: { type: DataTypes.STRING },
+      platform: { type: DataTypes.STRING },
       publisher: { type: DataTypes.STRING },
       genres: { type: DataTypes.STRING },
+      background_image: { type: DataTypes.STRING },
     },
     {
       sequelize,

@@ -4,43 +4,46 @@ import { Games } from '../../models/index.js';
 
 const router = express.Router();
 
-// GET /volunteers - Get all volunteers
+// GET /games - Get all games
 router.get('/', async (_req: Request, res: Response) => {
-  const volunteers = await Games.findAll();
-  res.json(volunteers);
-  // TODO: Update code to return all Volunteers
+  const games = await Games.findAll();
+  res.json(games);
+
 });
-// GET /volunteers/:id - Get a volunteer by ID
+// GET /games/:id - Get a game by ID
 router.get('/:id', async (req: Request, res: Response) => {
-  const volunteers = await Games.findByPk(req.params.id);
-  res.json(volunteers);
-  // TODO: Update code to return one Volunteer based on ID
+  const games = await Games.findByPk(req.params.id);
+  res.json(games);
+
 });
-// POST /volunteers - Create a new volunteer
+// POST /games - Create a new games
 router.post('/', async (req: Request, res: Response) => {
-  const volunteers = await Games.create(req.body);
-  res.json(volunteers);
-  // TODO: Update code to create a Volunteer
+  const games = await Games.create(req.body);
+  res.json(games);
+
 });
 
-// PUT /volunteers/:id - Update a volunteer by ID
-router.put('/:id', async (req: Request, res: Response) => {
-  const volunteers = await Games.findByPk(req.params.id);
-  if(volunteers) {
-    await volunteers.update(req.body);
-    res.json(volunteers);
-    }
-  // TODO: Update code to retrieve one Volunteer based on id and username and return an updated Volunteer object
-});
+// PUT /games/:id - Update  games by ID
+//! ON HOLD FOR TIME BEING
 
-// DELETE /volunteers/:id - Delete a volunteer by ID
+// router.put('/:id', async (req: Request, res: Response) => {
+//   const games = await Games.findByPk(req.params.id);
+//   if(games) {
+//     await games.update(req.body);
+//     res.json(games);
+//     }
+  
+// });
+
+
+// DELETE /games/:id - Delete  games by ID
 router.delete('/:id', async (req: Request, res: Response) => {
-  const volunteers = await Games.findByPk(req.params.id);
-  if(volunteers) {
-    await volunteers.destroy();
-    res.json(volunteers);
+  const games = await Games.findByPk(req.params.id);
+  if(games) {
+    await games.destroy();
+    res.json(games);
   }
-  // TODO: Update code to delete Volunteer based on ID
+
 });
 
 export { router as gamesRouter };
