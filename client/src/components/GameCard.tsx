@@ -4,6 +4,7 @@ import type Game from '../utils/interfaces/Game.interface';
 
 type GameCardProps = {
   currentGame: Game;
+  addToLibrary: Game;
   addToPlayList?: (() => void) | null;
   addToFinishedList?: (() => void) | null;
   onPlayList?: boolean | null;
@@ -20,6 +21,7 @@ type GameCardProps = {
 
 const GameCard = ({
   currentGame,
+  addToLibrary,
   addToPlayList,
   addToFinishedList,
   onPlayList,
