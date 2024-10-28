@@ -1,10 +1,13 @@
 import type React from 'react';
 import type Game from '../utils/interfaces/Game.interface';
+import { IoEyeOutline } from 'react-icons/io5';
+import { ImCross } from 'react-icons/im';
+import { CgPlayListAdd } from 'react-icons/cg';
 
 
 type GameCardProps = {
   currentGame: Game;
-  addToPlayList?: (() => void) | null;
+  addToLibrary?: (() => void) | null;
   addToFinishedList?: (() => void) | null;
   onPlayList?: boolean | null;
   onFinishedList?: boolean | null;
@@ -20,7 +23,7 @@ type GameCardProps = {
 
 const GameCard = ({
   currentGame,
-  addToPlayList,
+  addToLibrary,
   addToFinishedList,
   onPlayList,
   onFinishedList,
@@ -28,24 +31,24 @@ const GameCard = ({
 }: GameCardProps) => {
   return (
     <>
-      {currentGame?.Name ? (
-        <section className='filmCard'>
+      {currentGame?.name ? (
+        <section className='gameCard'>
           <figure>
-            <img src={`${currentGame.Background_Image}`} alt={`${currentGame.Name}`} />
+            <img width="200px" src={currentGame.background_image ? `${currentGame.background_image}` : `https://images.pexels.com/photos/275033/pexels-photo-275033.jpeg?cs=srgb&dl=pexels-pixabay-275033.jpg&fm=jpg`} alt={`${currentGame.name}`} />
           </figure>
           <article className='details'>
-            <h2>{currentGame.Name}</h2>
+            <h2>{currentGame.name}</h2>
             <p>
               <strong>Created by: </strong> {currentGame.Developer}
             </p>
             <p>
-              <strong>Platforms: </strong> {currentGame.Platform}
+              <strong>Platforms: </strong> {currentGame.platforms.length ? currentGame.platforms[0].platform.name : "null"}
             </p>
             <p>
-              <strong>Released:</strong> {currentGame.Released_Date}
+              <strong>Released:</strong> {currentGame.released}
             </p>
             <p>
-              <strong>Genre:</strong> {currentGame.Genre}
+              <strong>Genre:</strong> {currentGame.genres.length ? currentGame.genres[0]?.name : "null"}
             </p>
           </article>
           <article className='plot'>
@@ -71,17 +74,17 @@ const GameCard = ({
             <aside className='icons'>
               <CgPlayListAdd
                 style={{ fontSize: '50px', cursor: 'pointer' }}
-                onClick={() => addToWatchList?.()}
+                onClick={() => addToLibrary?.()}
               />
               <IoEyeOutline
                 style={{ fontSize: '50px', cursor: 'pointer' }}
-                onClick={() => addToSeenItList?.()}
+                onClick={() => addToFinishedList?.()}
               />
             </aside>
           )}
         </section>
       ) : (
-        <h1 style={{ margin: '16px 0' }}>Please search for a film.</h1>
+        <h1 style={{ margin: '16px 0' }}>Please search for a game.</h1>
       )}
     </>
   );
