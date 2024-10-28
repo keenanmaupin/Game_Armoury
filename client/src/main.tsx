@@ -1,13 +1,31 @@
+import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+// import './index.css';
 
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import LoginPage from './pages/LoginPage'; // Import the LoginPage component
+import App from './App.tsx';
+import LoginPage from './pages/LoginPage.tsx'; // Import the GamePage file
+import GameSearch from './pages/gameSearch.tsx' // Import the GamePage file
+import ErrorPage from './pages/ErrorPage.tsx'; // Import the ErrorPage file
 
-// Remove this line if you want to get rid of the global styles
-// import './index.css'; 
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <LoginPage />
+      },
+      {
+        path: '/Searchgame',
+        element: <GameSearch />
+      }
+    ]
+  }
+])
 
-createRoot(document.getElementById('root') as HTMLElement).render(
-  <StrictMode>
-    <LoginPage />
-  </StrictMode>
-);
+const rootElement = document.getElementById('root');
+if (rootElement) {
+  ReactDOM.createRoot(rootElement).render(<RouterProvider router={router} />);
+}

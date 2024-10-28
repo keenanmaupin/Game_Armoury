@@ -1,8 +1,7 @@
 /* Import the custom font */
 @font-face {
-  font-family: 'MyCustomFont';
-  src: url('/assets/fonts/my-custom-font.woff2') format('woff2'),
-       url('/assets/fonts/my-custom-font.woff') format('woff');
+  font-family: "MyCustomFont";
+  src: url("/assets/fonts/my-custom-font.woff2") format("woff2"), url("/assets/fonts/my-custom-font.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -24,7 +23,7 @@
 }
 
 .site-header h1 {
-  font-family: 'MyCustomFont', sans-serif; /* Apply custom font */
+  font-family: "MyCustomFont", sans-serif; /* Apply custom font */
   font-size: 4em; /* Large font size for prominence */
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for readability */
@@ -39,7 +38,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/assets/pexels-atomlaborblog-776092.jpg'); /* Ensure this matches your file name */
+  background-image: url("/assets/pexels-atomlaborblog-776092.jpg"); /* Ensure this matches your file name */
   background-size: cover;
   background-position: center;
   filter: blur(8px);
@@ -76,7 +75,9 @@
   margin-bottom: 10px;
 }
 
-input[type="text"], input[type="password"], input[type="email"] {
+input[type="text"],
+input[type="password"],
+input[type="email"] {
   width: 100%;
   padding: 8px;
   margin: 5px 0;
@@ -103,7 +104,7 @@ button {
 }
 
 .login-btn {
-  background-color: #007BFF;
+  background-color: #007bff;
   color: white;
 }
 
