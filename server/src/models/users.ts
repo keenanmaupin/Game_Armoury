@@ -29,14 +29,37 @@ export function UsersFactory(sequelize: Sequelize): typeof Users {
       userName: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          isAlphanumeric: {
+            msg: 'Username must be alphanumeric.'
+          },
+          notEmpty: {
+            msg: 'Username cannot be empty.'
+          }
+        }
       },
       password: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          notNull: {
+            msg: 'Password is required.',
+          },
+          len: [9, 16],
+          notEmpty: {
+            msg: 'Password cannot be empty',
+          },
+        },
       },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
+        validate: {
+          isEmail: {
+            msg: 'Must be a valid email address.',
+          },
+        },
       },
       gamingEra: {
         type: DataTypes.STRING,
