@@ -1,7 +1,7 @@
 import express from 'express';
 import type { Request, Response } from 'express';
 import { Users } from '../../models/index.js';
-import bcrypt, { hash } from 'bcrypt';
+import bcrypt from 'bcrypt';
 
 
 const router = express.Router();
