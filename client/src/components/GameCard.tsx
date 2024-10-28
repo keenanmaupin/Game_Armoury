@@ -39,7 +39,7 @@ const GameCard = ({
           <article className='details'>
             <h2>{currentGame.name}</h2>
             <p>
-              <strong>Created by: </strong> {currentGame.Developer}
+              <strong>Created by: </strong> {}
             </p>
             <p>
               <strong>Platforms: </strong> {currentGame.platforms.length ? currentGame.platforms[0].platform.name : "null"}
@@ -53,8 +53,9 @@ const GameCard = ({
           </article>
           <article className='plot'>
             <p>
-              <strong>Plot:</strong> {currentGame.Description}
+              <strong>Plot:</strong>
             </p>
+            <p>{currentGame.description_raw.slice(0, 100)}{currentGame.description_raw.length > 100 && '...'}</p>
           </article>
           {onPlayList || onFinishedList ? (
             <aside className='icons'>
@@ -65,7 +66,7 @@ const GameCard = ({
                     e,
                     onPlayList,
                     onFinishedList,
-                    currentGame.Name
+                    currentGame.name
                   )
                 }
               />

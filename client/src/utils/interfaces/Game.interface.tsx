@@ -4,10 +4,10 @@ export default interface Game {
   readonly name: string | null;
   readonly released: string | null;
   readonly background_image: string | null;
-  readonly Developer: string | null;
+  readonly developers: Keyable[] | null;
   readonly platforms: Keyable[];
   readonly genres: Keyable[];
-  readonly Description: string| null;
+  readonly description_raw: string;
 }
 
 interface Keyable {
