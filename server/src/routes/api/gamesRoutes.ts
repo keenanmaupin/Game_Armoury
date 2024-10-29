@@ -37,8 +37,7 @@ router.post('/playlist', async (req: Request, res: Response) => {
   const { slug, name, released, background_image, developer, platform, genres, description_raw, username } = req.body;
 
   const search = await Users.findOne({ where: {username: username}})
-  let userId: any = search?.dataValues.id
-
+  let user_id: any = search?.dataValues.id
   try {
     const newGame = await Games.create({
       slug,
@@ -49,9 +48,8 @@ router.post('/playlist', async (req: Request, res: Response) => {
       platform,
       genres,
       description_raw,
-      userId
+      user_id
     });
-    console.log(newGame)
     res.status(200).json(newGame);
   } catch (error: any) {
     res.status(400).json({ message: 'Unable to add game to user'});

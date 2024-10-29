@@ -19,13 +19,12 @@ const GameSearch = () => {
           "authorization": `Bearer ${localStorage.getItem('id_token')}`
         },
         body: JSON.stringify({
-          id: game.id,
           slug: game.slug,
           name: game.name,
           released: game.released,
           background_image: game.background_image,
-          developers: game.developers.map((dev) => dev.name).join(", "),
-          platforms: game.platforms.map((plat) => plat.platform.name).join(", "),
+          developer: game.developers.map((dev) => dev.name).join(", "),
+          platform: game.platforms.map((plat) => plat.platform.name).join(", "),
           genres: game.genres.map((genre) => genre.name).join(", "),
           description_raw: game.description_raw,
           username

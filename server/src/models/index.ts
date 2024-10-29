@@ -6,7 +6,7 @@ const Users = UsersFactory(sequelize);
 const Games = GamesFactory(sequelize);
 
 Users.hasMany(Games, {
-    foreignKey: 'userId',
+    foreignKey: 'user_id',
     onDelete: 'CASCADE'
 });
 Games.belongsToMany(Users,{
