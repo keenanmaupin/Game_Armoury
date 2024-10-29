@@ -1,6 +1,7 @@
 import express from 'express';
 import type { Request, Response } from 'express';
 import { Games } from '../../models/index.js';
+import { Users } from '../../models/users.js'
 // import fetch from 'node-fetch'; 
 import 'dotenv/config';
 
@@ -33,11 +34,12 @@ const router = express.Router();
 // });
 
 router.post('/playlist', async (req: Request, res: Response) => {
-  const { id, slug, name, released, background_image, developer, platform, genres, description_raw, userId } = req.body;
+  const { slug, name, released, background_image, developer, platform, genres, description_raw, username } = req.body;
 
+  const search = await Users.findOne({ where: {username: username}})
+  let user_id: any = search?.dataValues.id
   try {
-    const newUser = await Games.create({
-      id,
+    const newGame = await Games.create({
       slug,
       name,
       released,
@@ -46,11 +48,11 @@ router.post('/playlist', async (req: Request, res: Response) => {
       platform,
       genres,
       description_raw,
-      userId
+      user_id
     });
-    res.status(200).json(newUser);
+    res.status(200).json(newGame);
   } catch (error: any) {
-    res.status(400).json({ message: 'Unable to create new user'});
+    res.status(400).json({ message: 'Unable to add game to user'});
   }
 });
 

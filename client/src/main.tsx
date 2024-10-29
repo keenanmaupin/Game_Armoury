@@ -8,6 +8,7 @@ import GameSearch from './pages/GameSearch.tsx' // Import the GamePage file
 import HomePage from './pages/HomePage.tsx';
 import ErrorPage from './pages/ErrorPage.tsx'; // Import the ErrorPage file
 import AboutPage from './pages/AboutPage.tsx';
+
 const router = createBrowserRouter([
   {
     path: '/',
