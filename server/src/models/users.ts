@@ -52,7 +52,7 @@ export function UsersFactory(sequelize: Sequelize): typeof Users {
           notNull: {
             msg: 'Password is required.',
           },
-          len: [9, 16],
+          len: [4, 16],
           notEmpty: {
             msg: 'Password cannot be empty',
           },
