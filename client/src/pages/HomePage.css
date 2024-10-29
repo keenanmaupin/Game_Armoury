@@ -5,11 +5,11 @@
     box-sizing: border-box;
 }
 
-html, body, #root {
+/* html, body, #root {
     width: 100%;
     height: 100%;
     background-color: #ffe5d1; /* Peach background for entire page */
-}
+} */
 
 /* Sidebar for Genres */
 .sidebar {

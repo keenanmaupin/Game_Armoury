@@ -8,6 +8,12 @@ export const seedUsers = async () => {
       email: 'user@example.com',
       gamingEra: 'Nintendo-64 Player'
     },
+    {
+      username: 'Kenhie',
+      password: 'tobiko123',
+      email: 'kenhie@example.com',
+      gamingEra: 'NES'
+    }
 
   ], { individualHooks: true})
 }
