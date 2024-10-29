@@ -9,7 +9,7 @@ const login = async (req: Request, res: Response):Promise<any> => {
 
   // Find the user in the database by username
   const user = await Users.findOne({
-    where: { userName: username },
+    where: { username: username },
   });
 
   // If user is not found, send an authentication failed response
@@ -32,10 +32,39 @@ const login = async (req: Request, res: Response):Promise<any> => {
   return res.json({ token });  // Send the token as a JSON response
 };
 
+const register = async (req: Request, res: Response): Promise<any> => {
+  const { username, password, email, gamingEra } = req.body;  // Extract username, password, and email from request body
+console.log(req.body);
+  // Check if the user already exists
+  // const existingUser = await Users.findOne({
+  //     where: { username: username },
+  // });
+
+  // if (existingUser) {
+  //     return res.status(409).json({ message: 'Username already exists' });
+  // }
+
+  // Create a new user record
+  const newUser = await Users.create({
+      username,
+      password,
+      email,
+      gamingEra,
+  });
+
+  // Get the secret key from environment variables
+  const secretKey = process.env.JWT_SECRET_KEY || '';
+
+  // Generate a JWT token for the new user
+  const token = jwt.sign({ username: newUser.username }, secretKey, { expiresIn: '1h' });
+  return res.json({ token });  // Send the token as a JSON response
+};
+
 // Create a new router instance
 const router = Router();
 
-// POST /login - Login a user
+// POST auth/login - Login a user
 router.post('/login', login);
+router.post('/register', register);
 
 export default router;  // Export the router instance

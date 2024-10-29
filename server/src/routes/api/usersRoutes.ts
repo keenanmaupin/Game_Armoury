@@ -32,13 +32,13 @@ router.get('/:id', async (req: Request, res: Response) => {
 });
 
 // POST api/users - Create new users
-router.post('/', async (req: Request, res: Response) => {
-  const { userName, password, email, gamingEra } = req.body;
+router.post('/auth/register', async (req: Request, res: Response) => {
+  const { username, password, email, gamingEra } = req.body;
   try {
     // hashing is already done in User model
     // const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = await Users.create({
-      userName,
+      username,
       password,
       email,
       gamingEra,
