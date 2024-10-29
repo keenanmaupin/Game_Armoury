@@ -17,6 +17,7 @@ const LoginPage: React.FC = () => {
 
     const handleLogin = (event: React.FormEvent) => {
         event.preventDefault();
+        localStorage.setItem('username', username)
         fetch('/auth/login', {
             method: 'POST',
             headers: {

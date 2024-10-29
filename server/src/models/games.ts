@@ -2,7 +2,7 @@ import { DataTypes, Sequelize, Model, Optional } from 'sequelize';
 
 
 interface GamesAttributes {
-  id: string;
+  id: number;
   slug: string;
   name: string;
   released: string;
@@ -11,13 +11,13 @@ interface GamesAttributes {
   platform: string;
   genres: string;
   description_raw: string;
-  userId: string;
+  user_id: number;
 }
 
 interface GamesCreationAttributes extends Optional<GamesAttributes, 'id'> {}
 
 export class Games extends Model<GamesAttributes, GamesCreationAttributes> implements GamesAttributes {
-  public id!: string;
+  public id!: number;
   public slug!: string;
   public name!: string;
   public released!: string;
@@ -26,7 +26,7 @@ export class Games extends Model<GamesAttributes, GamesCreationAttributes> imple
   public platform!: string;
   public genres!: string;
   public description_raw!: string;
-  public userId!: string;
+  public user_id!: number;
 }
 
 export function GamesFactory(sequelize: Sequelize): typeof Games {
@@ -39,13 +39,13 @@ export function GamesFactory(sequelize: Sequelize): typeof Games {
       },
       slug: {type: DataTypes.STRING},
       name: { type: DataTypes.STRING },
-      released: { type: DataTypes.INTEGER },
+      released: { type: DataTypes.STRING },
       background_image: { type: DataTypes.STRING },
       developer: { type: DataTypes.STRING },
       platform: { type: DataTypes.STRING },
       genres: { type: DataTypes.STRING },
-      description_raw: { type: DataTypes.STRING },
-      userId: { type: DataTypes.STRING},
+      description_raw: { type: DataTypes.TEXT },
+      user_id: { type: DataTypes.INTEGER},
     },
     {
       sequelize,
