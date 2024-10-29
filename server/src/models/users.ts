@@ -1,30 +1,25 @@
 import { DataTypes, Sequelize, Model, Optional } from 'sequelize';
 import bcrypt from 'bcrypt';
-
 interface UsersAttributes {
   id: number;
-  userName: string;
+  username: string;
   password: string;
   email: string;
   gamingEra: string;
 }
-
 interface UsersCreationAttributes extends Optional<UsersAttributes, 'id'> {}
-
 export class Users extends Model<UsersAttributes, UsersCreationAttributes> implements UsersAttributes {
   public id!: number;
-  public userName!: string;  
-  public password!: string;  
-  public email!: string;  
-  public gamingEra!: string; 
-  
+  public username!: string;
+  public password!: string;
+  public email!: string;
+  public gamingEra!: string;
   // Hash the password before saving the user
   public async setPassword(password: string) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(password, saltRounds);
   }
 }
-
 export function UsersFactory(sequelize: Sequelize): typeof Users {
     Users.init(
     {
@@ -33,7 +28,7 @@ export function UsersFactory(sequelize: Sequelize): typeof Users {
         primaryKey: true,
         autoIncrement: true,
       },
-      userName: {
+      username: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -77,7 +72,7 @@ export function UsersFactory(sequelize: Sequelize): typeof Users {
       sequelize,
       tableName: 'users',
       timestamps: false, // Disable createdAt and updatedAt fields by default
-      underscored: true, // Convert table names to underscored_case by default
+      // underscored: true, // Convert table names to underscored_case by default
       paranoid: true, // Add deletedAt field to soft delete records by default
       freezeTableName: true, // Prevent Sequelize from pluralizing table names by default
       hooks: {
@@ -90,8 +85,5 @@ export function UsersFactory(sequelize: Sequelize): typeof Users {
       },
     }
   );
-
-
-
   return Users;
 }
