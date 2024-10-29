@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
 import './LoginPage.css';
 import auth from '../utils/auth';
-
 const LoginPage: React.FC = () => {
     const [isRegisterMode, setIsRegisterMode] = useState(false);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
     const toggleMode = () => {
         setIsRegisterMode((prevMode) => !prevMode);
     };
-
     const titleText = isRegisterMode ? "Register" : "Login";
-
     const handleLogin = (event: React.FormEvent) => {
         event.preventDefault();
+        console.log("I'm trying to LOGIN!")
         fetch('/auth/login', {
             method: 'POST',
             headers: {
@@ -37,7 +34,6 @@ const LoginPage: React.FC = () => {
             auth.login(data.token)
         })
     }
-
     return (
         <div className="login-page">
             <div className="background"></div>
@@ -61,8 +57,8 @@ const LoginPage: React.FC = () => {
                 </h2>
                 <form onSubmit={isRegisterMode ? undefined : handleLogin}>
                     <div className="input-group">
-                        <input 
-                        type="text" 
+                        <input
+                        type="text"
                         placeholder="Username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
@@ -71,7 +67,7 @@ const LoginPage: React.FC = () => {
                     </div>
                     <div className="input-group">
                         <input
-                        type="password" 
+                        type="password"
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
@@ -102,5 +98,4 @@ const LoginPage: React.FC = () => {
         </div>
     );
 };
-
 export default LoginPage;
