@@ -3,8 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // import './index.css';
 
 import App from './App.tsx';
-import LoginPage from './pages/LoginPage.tsx'; // Import the LoginPage file
-import HomePage from './pages/HomePage.tsx'; // Import the HomePage File
+import LoginPage from './pages/LoginPage.tsx'; // Import the GamePage file
 import GameSearch from './pages/GameSearch.tsx' // Import the GamePage file
 import ErrorPage from './pages/ErrorPage.tsx'; // Import the ErrorPage file
 
@@ -17,10 +16,6 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <LoginPage />
-      },
-      {
-        path: '/HomePage',
-        element: <HomePage />
       },
       {
         path: '/Searchgame',
