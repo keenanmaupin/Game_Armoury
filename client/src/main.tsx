@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.tsx';
 import LoginPage from './pages/LoginPage.tsx'; // Import the GamePage file
 import GameSearch from './pages/GameSearch.tsx' // Import the GamePage file
+import HomePage from './pages/HomePage.tsx';
 import ErrorPage from './pages/ErrorPage.tsx'; // Import the ErrorPage file
 import HomePage from './pages/HomePage.tsx';
 
@@ -19,15 +20,13 @@ const router = createBrowserRouter([
         element: <LoginPage />
       },
       {
-        path: '/SearchGame',
-        element: <GameSearch />
+        path:'/HomePage',
+        element: <HomePage />
       },
       {
-        path: '/HomePage',
-        element: <HomePage/>
-      }
-
-
+        path: '/Searchgame',
+        element: <GameSearch />
+      },
     ]
   }
 ])
