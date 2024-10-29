@@ -11,7 +11,7 @@ interface GamesAttributes {
   platform: string;
   genres: string;
   description_raw: string;
-  userId: string;
+  userId: number;
 }
 
 interface GamesCreationAttributes extends Optional<GamesAttributes, 'id'> {}
@@ -26,7 +26,7 @@ export class Games extends Model<GamesAttributes, GamesCreationAttributes> imple
   public platform!: string;
   public genres!: string;
   public description_raw!: string;
-  public userId!: string;
+  public userId!: number;
 }
 
 export function GamesFactory(sequelize: Sequelize): typeof Games {
@@ -45,7 +45,7 @@ export function GamesFactory(sequelize: Sequelize): typeof Games {
       platform: { type: DataTypes.STRING },
       genres: { type: DataTypes.STRING },
       description_raw: { type: DataTypes.STRING },
-      userId: { type: DataTypes.STRING},
+      userId: { type: DataTypes.INTEGER},
     },
     {
       sequelize,

@@ -11,10 +11,12 @@ const GameSearch = () => {
 
   const addToLibrary = async (game: Game) => {
     try {
-      const response = await fetch("/playlist", {
+      const username = localStorage.getItem('username')
+      const response = await fetch("/api/games/playlist", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "authorization": `Bearer ${localStorage.getItem('id_token')}`
         },
         body: JSON.stringify({
           id: game.id,
@@ -26,6 +28,7 @@ const GameSearch = () => {
           platforms: game.platforms.map((plat) => plat.platform.name).join(", "),
           genres: game.genres.map((genre) => genre.name).join(", "),
           description_raw: game.description_raw,
+          username
         }),
       });
 
