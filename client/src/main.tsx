@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App.tsx';
 import LoginPage from './pages/LoginPage.tsx'; // Import the GamePage file
-import GameSearch from './pages/GameSearch.tsx' // Import the GamePage file
+import GameSearch from './pages/gameSearch.tsx' // Import the GamePage file
 import ErrorPage from './pages/ErrorPage.tsx'; // Import the ErrorPage file
 
 const router = createBrowserRouter([
