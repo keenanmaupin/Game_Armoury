@@ -2,27 +2,31 @@ import { DataTypes, Sequelize, Model, Optional } from 'sequelize';
 
 
 interface GamesAttributes {
-  id: number;
+  id: string;
+  slug: string;
   name: string;
-  description: string;
-  releaseDate: number;
-  platform: string;
-  publisher: string;
-  genres: string;
+  released: string;
   background_image: string;
+  developer: string;
+  platform: string;
+  genres: string;
+  description_raw: string;
+  userId: string;
 }
 
 interface GamesCreationAttributes extends Optional<GamesAttributes, 'id'> {}
 
 export class Games extends Model<GamesAttributes, GamesCreationAttributes> implements GamesAttributes {
-  public id!: number;
+  public id!: string;
+  public slug!: string;
   public name!: string;
-  public description!: string;
-  public releaseDate!: number;
-  public platform!: string;
-  public publisher!: string;
-  public genres!: string;
+  public released!: string;
   public background_image!: string;
+  public developer!: string;
+  public platform!: string;
+  public genres!: string;
+  public description_raw!: string;
+  public userId!: string;
 }
 
 export function GamesFactory(sequelize: Sequelize): typeof Games {
@@ -33,13 +37,15 @@ export function GamesFactory(sequelize: Sequelize): typeof Games {
         primaryKey: true,
         autoIncrement: true,
       },
+      slug: {type: DataTypes.STRING},
       name: { type: DataTypes.STRING },
-      description: { type: DataTypes.STRING },
-      releaseDate: { type: DataTypes.INTEGER },
-      platform: { type: DataTypes.STRING },
-      publisher: { type: DataTypes.STRING },
-      genres: { type: DataTypes.STRING },
+      released: { type: DataTypes.INTEGER },
       background_image: { type: DataTypes.STRING },
+      developer: { type: DataTypes.STRING },
+      platform: { type: DataTypes.STRING },
+      genres: { type: DataTypes.STRING },
+      description_raw: { type: DataTypes.STRING },
+      userId: { type: DataTypes.STRING},
     },
     {
       sequelize,
