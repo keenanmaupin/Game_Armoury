@@ -1,4 +1,5 @@
 import { DataTypes, Sequelize, Model, Optional } from 'sequelize';
+import bcrypt from 'bcrypt';
 
 interface UsersAttributes {
   id: number;
@@ -15,7 +16,13 @@ export class Users extends Model<UsersAttributes, UsersCreationAttributes> imple
   public userName!: string;  
   public password!: string;  
   public email!: string;  
-  public gamingEra!: string;  
+  public gamingEra!: string; 
+  
+  // Hash the password before saving the user
+  public async setPassword(password: string) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(password, saltRounds);
+  }
 }
 
 export function UsersFactory(sequelize: Sequelize): typeof Users {
@@ -73,8 +80,18 @@ export function UsersFactory(sequelize: Sequelize): typeof Users {
       underscored: true, // Convert table names to underscored_case by default
       paranoid: true, // Add deletedAt field to soft delete records by default
       freezeTableName: true, // Prevent Sequelize from pluralizing table names by default
+      hooks: {
+        beforeCreate: async (user: Users) => {
+          await user.setPassword(user.password);
+        },
+        beforeUpdate: async (user: Users) => {
+          await user.setPassword(user.password);
+        },
+      },
     }
   );
+
+
 
   return Users;
 }
