@@ -4,7 +4,7 @@ export default interface Game {
   readonly name: string | null;
   readonly released: string | null;
   readonly background_image: string | null;
-  readonly developers: Keyable[] | null;
+  readonly developers: Keyable[];
   readonly platforms: Keyable[];
   readonly genres: Keyable[];
   readonly description_raw: string;
