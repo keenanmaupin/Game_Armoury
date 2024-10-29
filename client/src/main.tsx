@@ -7,7 +7,7 @@ import LoginPage from './pages/LoginPage.tsx'; // Import the GamePage file
 import GameSearch from './pages/GameSearch.tsx' // Import the GamePage file
 import HomePage from './pages/HomePage.tsx';
 import ErrorPage from './pages/ErrorPage.tsx'; // Import the ErrorPage file
-import HomePage from './pages/HomePage.tsx';
+import ProfilePage from './pages/ProfilePage.tsx'; //Import the ProfilePage file
 
 const router = createBrowserRouter([
   {
@@ -27,6 +27,10 @@ const router = createBrowserRouter([
         path: '/Searchgame',
         element: <GameSearch />
       },
+      {
+        path: '/Profile',
+        element: <ProfilePage />
+      }
     ]
   }
 ])

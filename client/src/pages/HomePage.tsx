@@ -1,5 +1,6 @@
 import React from "react";
 import "./HomePage.css";
+import { Link } from "react-router-dom";
 
 const Home: React.FC = () => {
   return (
@@ -29,7 +30,7 @@ const Home: React.FC = () => {
           <nav className="nav-links">
             <a href="#home">HomePage</a>
             <a href="#about">About</a>
-            <a href="#profile">Profile</a>
+            <Link to='/Profile'>Profile</Link>
           </nav>
         </header>
 
