@@ -15,7 +15,7 @@ class AuthService {
     // Store the JWT token in localStorage and redirect to the home page
     login(idToken: string) {
       localStorage.setItem('id_token', idToken);
-      window.location.assign('/Searchgame');
+      window.location.assign('/HomePage');
     }
   
     // Remove the JWT token from localStorage and redirect to the home page
