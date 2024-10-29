@@ -1,34 +1,56 @@
 import express from 'express';
 import type { Request, Response } from 'express';
 import { Games } from '../../models/index.js';
-import fetch from 'node-fetch'; 
+// import fetch from 'node-fetch'; 
 import 'dotenv/config';
 
 
 const router = express.Router();
 
 
-router.get('/', async (req: Request, res: Response):Promise<any> => {
-  const { query } = req.query;
+// router.get('/', async (req: Request, res: Response):Promise<any> => {
+//   const { query } = req.query;
 
-  if (!query) {
-    return res.status(400).json({ error: 'Query parameter is required' });
-  }
+//   if (!query) {
+//     return res.status(400).json({ error: 'Query parameter is required' });
+//   }
+
+//   try {
+//     const apiResponse = await fetch(
+//       `https://api.rawg.io/api/games/${query}?key=${process.env.VITE_RAWG_API_KEY}`
+//     );
+
+//     if (!apiResponse.ok) {
+//       return res.status(apiResponse.status).json({ error: 'Failed to fetch games from the API' });
+//     }
+
+//     const data = await apiResponse.json();
+//     res.json(data);
+//   } catch (error) {
+//     console.error('Error fetching games:', error);
+//     res.status(500).json({ error: 'An error occurred while fetching games' });
+//   }
+// });
+
+router.post('/playlist', async (req: Request, res: Response) => {
+  const { id, slug, name, released, background_image, developer, platform, genres, description_raw, userId } = req.body;
 
   try {
-    const apiResponse = await fetch(
-      `https://api.rawg.io/api/games/${query}?key=${process.env.VITE_RAWG_API_KEY}`
-    );
-
-    if (!apiResponse.ok) {
-      return res.status(apiResponse.status).json({ error: 'Failed to fetch games from the API' });
-    }
-
-    const data = await apiResponse.json();
-    res.json(data);
-  } catch (error) {
-    console.error('Error fetching games:', error);
-    res.status(500).json({ error: 'An error occurred while fetching games' });
+    const newUser = await Games.create({
+      id,
+      slug,
+      name,
+      released,
+      background_image,
+      developer,
+      platform,
+      genres,
+      description_raw,
+      userId
+    });
+    res.status(200).json(newUser);
+  } catch (error: any) {
+    res.status(400).json({ message: 'Unable to create new user'});
   }
 });
 

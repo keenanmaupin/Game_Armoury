@@ -9,14 +9,35 @@ const GameSearch = () => {
   const [games, setGames] = useState<Game[]>([]); // State to store an array of games
   const [searchInput, setSearchInput] = useState<string>("");
 
-  const addToLibrary = (game: Game) => {
-    let parsedGamesToPlay: Game[] = [];
-    const storedGamesToPlay = localStorage.getItem("gamesToPlay");
-    if (typeof storedGamesToPlay === "string") {
-      parsedGamesToPlay = JSON.parse(storedGamesToPlay);
+  const addToLibrary = async (game: Game) => {
+    try {
+      const response = await fetch("/playlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: game.id,
+          slug: game.slug,
+          name: game.name,
+          released: game.released,
+          background_image: game.background_image,
+          developers: game.developers.map((dev) => dev.name).join(", "),
+          platforms: game.platforms.map((plat) => plat.platform.name).join(", "),
+          genres: game.genres.map((genre) => genre.name).join(", "),
+          description_raw: game.description_raw,
+        }),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Game added to playlist successfully:", result);
+      } else {
+        console.error("Failed to add game to playlist");
+      }
+    } catch (error) {
+      console.error("Error adding game to library:", error);
     }
-    parsedGamesToPlay.push(game);
-    localStorage.setItem("gamesToPlay", JSON.stringify(parsedGamesToPlay));
   };
 
   const addToFinishedList = (game: Game) => {
@@ -34,9 +55,9 @@ const GameSearch = () => {
     const data: Game[] = await searchGame(searchInput); // Expect an array of games
 
     const gameIds = data.map((game) => game.id).filter((id): id is string => id !== null);
-    console.log("Game IDs:", gameIds)
+    console.log("Game IDs:", gameIds);
 
-    const gameDataById: Game[] = await searchById(gameIds)
+    const gameDataById: Game[] = await searchById(gameIds);
 
     setGames(gameDataById); // Update the state with the array of games
   };
