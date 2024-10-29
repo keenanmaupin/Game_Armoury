@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import { searchGame } from "../api/API";
+import { searchGame, searchById } from "../api/API";
 import GameCard from "../components/GameCard";
 import type Game from "../utils/interfaces/Game.interface";
 
@@ -32,7 +32,13 @@ const GameSearch = () => {
   const searchGameByTitle = async (event: FormEvent) => {
     event.preventDefault();
     const data: Game[] = await searchGame(searchInput); // Expect an array of games
-    setGames(data); // Update the state with the array of games
+
+    const gameIds = data.map((game) => game.id).filter((id): id is string => id !== null);
+    console.log("Game IDs:", gameIds)
+
+    const gameDataById: Game[] = await searchById(gameIds)
+
+    setGames(gameDataById); // Update the state with the array of games
   };
 
   return (
