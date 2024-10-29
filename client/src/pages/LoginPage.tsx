@@ -125,7 +125,7 @@ const LoginPage: React.FC = () => {
                     <div className="input-group">
                         <input
                             type="password" 
-                            placeholder="Password"
+                            placeholder="Password at least 4-16 characters"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required 
