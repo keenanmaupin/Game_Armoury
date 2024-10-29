@@ -245,3 +245,25 @@
         justify-content: flex-end;
     }
 }
+.About-header{
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #9b0303;
+    text-decoration: underline;
+    padding-top: 20px;
+}
+.developer-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: 200px;
+    margin: 20px;
+    border-radius: 10px;
+    background-color: #66b4a7;
+    box-shadow: 2px 2px 8px rgba(0, 0, 4, 4);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-left: 20px;
+}
