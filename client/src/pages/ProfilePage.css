@@ -1,0 +1,103 @@
+.profile-page {
+  background-color: #f4f4f4;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  background-image: url('https://wallpapercave.com/wp/wp2757900.gif'); /* GIF background */      
+  min-height: 100vh;
+  padding: 10px;
+  flex-direction: column;
+}
+
+.profile-page h1 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #007bff;
+  padding: 10px;
+}
+
+.game-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+}
+
+.game-cards-container p {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 15px;
+  padding: 15px;
+  border: 1px solid #ccc; /* Optional: Add border for better separation */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-radius: 8px; /* Rounded corners */
+  transition: transform 0.2s; /* Animation for hover effect */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.card-img-top {
+  border-radius: 8px 8px 0 0; /* Rounded corners for the image */
+}
+
+.logo {
+  font-size: 50px;
+  font-weight: bold;
+  display: flex;
+  gap: 2px;
+}
+
+.logo .colored-letter {
+  display: inline-block;
+  font-size: 2rem; /* Adjust size as needed */
+  text-shadow: 
+      -1px -1px 0 #000, 
+      1px -1px 0 #000, 
+      -1px 1px 0 #000, 
+      1px 1px 0 #000,
+      3px 3px 6px rgba(0, 0, 0, 0.5); /* Softer drop shadow */
+  transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease; /* Add shadow transition */
+}
+
+.logo .colored-letter:hover {
+    transform: scale(1.2);
+}
+
+/* Colors for each letter in the logo */
+.letter-0 { color: #ff0000; } /* Red */
+.letter-1 { color: #ff7f00; } /* Orange */
+.letter-2 { color: #ffff00; } /* Yellow */
+.letter-3 { color: green; }    /* Green */
+.letter-4 { color: blue; }  /* Blue */
+.letter-5 { color: #4b0082; }  /* Indigo */
+.letter-6 { color: violet; }   /* Violet */
+.letter-7 { color: #ff0000; }
+.letter-8 { color: #ff7f00; }
+.letter-9 { color: #ffff00; }
+.letter-10 { color: green; }
+.letter-11 { color: blue; }
+
+
+/* Additional styling for the rainbow title */
+.logo .colored-letter {
+  display: inline-block; /* Allows for the letters to align correctly */
+  font-size: 5rem; /* Adjust the size as needed */
+  margin-bottom: 30px; /* Maintain spacing below the title */
+}
+
+/* Hover Effect */
+.logo .colored-letter:hover {
+  transform: scale(1.2);
+  text-shadow: 
+      -2px -2px 0 #000, 
+      2px -2px 0 #000, 
+      -2px 2px 0 #000, 
+      2px 2px 0 #000,
+      5px 5px 8px rgba(0, 0, 0, 0.7); /* More pronounced shadow on hover */
+}

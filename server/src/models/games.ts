@@ -17,16 +17,16 @@ interface GamesAttributes {
 interface GamesCreationAttributes extends Optional<GamesAttributes, 'id'> {}
 
 export class Games extends Model<GamesAttributes, GamesCreationAttributes> implements GamesAttributes {
-  public id!: number;
+  public id!: number; 
   public slug!: string;
   public name!: string;
-  public released!: string;
+  public released!: string; 
   public background_image!: string;
   public developer!: string;
-  public platform!: string;
-  public genres!: string;
-  public description_raw!: string;
-  public user_id!: number;
+  public platform!: string; 
+  public genres!: string; 
+  public description_raw!: string; 
+  public user_id!: number; 
 }
 
 export function GamesFactory(sequelize: Sequelize): typeof Games {

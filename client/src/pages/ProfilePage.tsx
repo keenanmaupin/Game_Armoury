@@ -2,7 +2,9 @@ import React from 'react';
 import ProfileCard from '../components/ProfileCard';
 import type Game from '../utils/interfaces/Game.interface';
 import { useState, useEffect } from 'react';
+import './ProfilePage.css';
 
+// FOR REFERENCE
 // const userLibrary: Game[] = [
 //   {
 //     id: 1,
@@ -33,7 +35,12 @@ const ProfilePage: React.FC = () => {
   useEffect(() => {
     const fetchLibrary = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/games/library');
+        const response = await fetch('/api/games/library', {
+          method: 'GET',
+          headers: {
+            "authorization": `Bearer ${localStorage.getItem('id_token')}`
+          }
+        });
         const data = await response.json();
         setUserLibrary(data);
       } catch (error) {
@@ -43,9 +50,16 @@ const ProfilePage: React.FC = () => {
 
     fetchLibrary();
   }, []);
+  
   return (
     <div className="profile-page">
-      <h1>Your Game Library</h1>
+      <h1 className="logo">
+        {"Your Game Library".split("").map((char, index) => (
+          <span key={index} className={`colored-letter letter-${index % 12}`}>
+            {char === ' ' ? '\u00A0' : char}
+          </span>
+        ))}
+      </h1>
       <div className="game-cards-container">
         {userLibrary.length > 0 ? (
           userLibrary.map((game) => (
