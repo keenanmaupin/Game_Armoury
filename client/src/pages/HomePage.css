@@ -129,10 +129,11 @@
 /* Navigation Links for smaller screens */
 .nav-links a {
     color: #fff;
-    font-size: 14px;
+    font-size: 30px;
     text-decoration: none;
     transition: color 0.3s ease;
     white-space: nowrap; /* Prevents links from wrapping */
+    text-shadow: 2px 2px 5px #000;
 }
 
 .nav-links a:hover {
