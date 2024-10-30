@@ -8,6 +8,8 @@ import path from 'path'
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const __dirname = path.resolve();
+
 // Serves static files in the entire client's dist folder
 app.use(express.static('../client/dist'));
 
