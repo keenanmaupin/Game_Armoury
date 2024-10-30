@@ -9,7 +9,7 @@ import 'dotenv/config';
 const router = express.Router();
 
 
-// router.get('/', async (req: Request, res: Response):Promise<any> => {
+// router.get('/library', async (req: Request, res: Response):Promise<any> => {
 //   const { query } = req.query;
 
 //   if (!query) {
@@ -32,6 +32,17 @@ const router = express.Router();
 //     res.status(500).json({ error: 'An error occurred while fetching games' });
 //   }
 // });
+
+//   /api/games/library
+router.get('/library', async (_req: Request, res: Response):Promise<any> => {
+  try{ 
+    const games = await Games.findAll();
+    res.json(games);
+  } catch (error) {
+    console.error('Error fetching games', error);
+    res.status(500).json({ error: 'Failed to fetch games' });
+  }
+});
 
 router.post('/playlist', async (req: Request, res: Response) => {
   const { slug, name, released, background_image, developer, platform, genres, description_raw, username } = req.body;
