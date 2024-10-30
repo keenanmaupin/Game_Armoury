@@ -247,13 +247,25 @@
 }
 .About-header{
     text-align: center;
-    font-size: 24px;
+    font-size: 45px;
     margin-bottom: 20px;
-    color: #9b0303;
+    color: #590d85;
     text-decoration: underline;
     padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    cursor:all-scroll;
+    &:hover{
+        color: #ff8800;
+    }
+    
+
 }
 .developer-card{
+    color: #00000000;
+    border: 4px solid #c00606;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -261,9 +273,23 @@
     width: 95%;
     height: 200px;
     margin: 20px;
-    border-radius: 10px;
-    background-color: #66b4a7;
+    border-radius: 66px;
+    background-color: #000000bd;
     box-shadow: 2px 2px 8px rgba(0, 0, 4, 4);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding-left: 20px;
+    &:hover{
+        color: #09ff00;
+    }
+    cursor:cell;
 }
+.Spooky-spook{
+    background-image: url('../assets/spooky.png');
+    background-size: cover; 
+    background-position: center; 
+    border-radius: 8px;
+    border: 2px solid #e26905;
+
+    
+}
+
