@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react";
 import "./HomePage.css";
+import { Link } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { searchGame, searchById } from "../api/API";

@@ -64,7 +64,7 @@ const GameCard = ({ currentGame, addToLibrary, addToFinishedList, onPlayList, on
             {/* Bottom center for icons */}
             <div className="card-footer d-flex justify-content-center">
               {onPlayList || onFinishedList ? (
-                <ImCross style={{ fontSize: "40px", cursor: "pointer", marginRight: "10px" }} onClick={(e) => removeFromStorage?.(e as React.MouseEvent<SVGSVGElement, MouseEvent>, onPlayList, onFinishedList, currentGame.name)} />
+                <ImCross style={{ fontSize: "40px", cursor: "pointer", marginRight: "10px" }} onClick={(e) => removeFromStorage?.(e, onPlayList, onFinishedList, currentGame.name)} />
               ) : (
                 <>
                   <CgPlayListAdd style={{ fontSize: "40px", cursor: "pointer", marginRight: "10px" }} onClick={() => addToLibrary?.()} />
