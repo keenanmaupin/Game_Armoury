@@ -1,6 +1,7 @@
 import React from "react";
 import "./HomePage.css";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+
 
 const Home: React.FC = () => {
   return (
@@ -29,8 +30,8 @@ const Home: React.FC = () => {
           </h1>
           <nav className="nav-links">
             <a href="#home">HomePage</a>
-            <a href="#about">About</a>
             <Link to='/Profile'>Profile</Link>
+            <Link to= '/About'>About</Link>
           </nav>
         </header>
 
