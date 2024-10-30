@@ -1,27 +1,62 @@
+import React from 'react';
+import ProfileCard from '../components/ProfileCard';
+import type Game from '../utils/interfaces/Game.interface';
+import { useState, useEffect } from 'react';
 
+// const userLibrary: Game[] = [
+//   {
+//     id: 1,
+//     name: "Call of Duty: Black Ops 6",
+//     background_image: "https://i0.wp.com/xboxera.com/wp-content/uploads/2024/09/black-ops-6-beta-end.jpg?ssl=1",
+//     developers: [{ name: "Developer 1" }],
+//     platforms: [{ platform: { name: "Platform 1" } }],
+//     released: "2023-09-15",
+//     genres: [{ name: "Genre 1" }],
+//     description_raw: "This is the plot of Game Title 1...",
+//   },
+//   {
+//     id: 2,
+//     name: "The Legend of Zelda",
+//     background_image: "https://www.nintendo.com/eu/media/images/10_share_images/portals_3/2x1_Hub_TheLegendOfZelda_ToTK.jpg",
+//     developers: [{ name: "Developer 2" }],
+//     platforms: [{ platform: { name: "Platform 2" } }],
+//     released: "2024-01-10",
+//     genres: [{ name: "Genre 2" }],
+//     description_raw: "This is the plot of Game Title 2...",
+//   },
+//   // Add more games as needed
+// ];
 
-const ProfilePage = () => {
+const ProfilePage: React.FC = () => {
+  const [userLibrary, setUserLibrary] = useState<Game[]>([]);
+
+  useEffect(() => {
+    const fetchLibrary = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/api/games/library');
+        const data = await response.json();
+        setUserLibrary(data);
+      } catch (error) {
+        console.error('Error fetching library', error);
+      }
+    };
+
+    fetchLibrary();
+  }, []);
   return (
-    <div style={styles.container}>
-      <h1>Hello</h1>
+    <div className="profile-page">
+      <h1>Your Game Library</h1>
+      <div className="game-cards-container">
+        {userLibrary.length > 0 ? (
+          userLibrary.map((game) => (
+            <ProfileCard key={game.id} currentGame={game} />
+          ))
+        ) : (
+          <p>No games in your library yet.</p>
+        )}
+      </div>
     </div>
   );
 };
 
-const styles = {
-  container: {
-    padding: '20px',
-    maxWidth: '600px',
-    margin: 'auto',
-    fontFamily: 'Arial, sans-serif',
-  },
-  title: {
-    fontSize: '2em',
-    textAlign: 'center',
-    color: '#333',
-  },
-};
-
 export default ProfilePage;
-
-//map through all the games that link to the account
