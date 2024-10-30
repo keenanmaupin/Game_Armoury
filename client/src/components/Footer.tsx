@@ -1,8 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
-
-
 const Footer = () => {
-  const currentPage = useLocation().pathname;
 
   return (
 <div className="footer">
