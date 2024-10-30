@@ -1,6 +1,7 @@
 import React from "react";
 import "./HomePage.css";
 import { Link } from 'react-router-dom';
+
 const Home: React.FC = () => {
   return (
     <div className="home-page">
